@@ -1,0 +1,9 @@
+query 1
+select a.apellido, a.nombres,  c.desccripcion  from alumnos a join inscripciones i on a.dni = i.dni_Alu
+join cursos c on c.cod_curso = i.cod_curso;
+
+query 2
+select (a.apellido), a.nombres, a.dni from alumnos a join inscripciones i on a.dni = i.dni_Alu
+join cursos c on c.cod_curso = i.cod_curso
+and c.cod_curso = 4
+and not exists (select 1 from pagos where dni_Alu = i.dni_Alu and cod_curso = 4 and mes = 6 and anio = 2023 and cod_curso = c.cod_curso);
